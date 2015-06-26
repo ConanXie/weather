@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=0">
+    <title>weather</title>
+    <link rel="stylesheet" href="a.css">
+    <link rel="icon" href="img/icon.png" />
+    <script src="a.js"></script>
+    <script src="jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <div id="whole">
+        <div id="head">
+            <div id="thecity">
+                <div id="city" class="city"></div>
+            </div>
+            <div id="cityloading">
+                <div class="threespinner">
+                    <div class="three-bounce1"></div>
+                    <div class="three-bounce2"></div>
+                    <div class="three-bounce3"></div>
+                </div>
+            </div>
+            <div id="menu" class="menu" title="menu"></div>
+        </div>
+        <div id="realweather">
+            <div id="realtext">
+                <p id="realtemperature" class="realtemp"></p>
+            </div>
+            <p id="t_p"></p>
+            <div id="pm25">
+                <div id="pm25box" class="pm25box">
+                    <canvas id="pm25canvas" width="240" height="240">浏览器不支持canvas</canvas>
+                    <p id="pm25text"></p>
+                </div>
+            </div>
+        </div>
+        <div id="detail">
+            <div id="detailweather">
+                <div id="today" class="daybox today">
+                    <p id="todaydate"></p>
+                    <div id="todayimg"></div>
+                    <p id="todayweather"></p>
+                    <p id="todaywind"></p>
+                    <p id="todaytemperature"></p>
+                </div>
+                <div id="tomorrow" class="daybox tomorrow">
+                    <p id="tomorrowdate"></p>
+                    <div id="tomorrowimg"></div>
+                    <p id="tomorrowweather"></p>
+                    <p id="tomorrowwind"></p>
+                    <p id="tomorrowtemperature"></p>
+                </div>
+                <div id="aftertomorrow" class="daybox aftertomorrow">
+                    <p id="aftertomorrowdate"></p>
+                    <div id="aftertomorrowimg"></div>
+                    <p id="aftertomorrowweather"></p>
+                    <p id="aftertomorrowwind"></p>
+                    <p id="aftertomorrowtemperature"></p>
+                </div>
+                <div id="threedays" class="daybox threedays">
+                    <p id="threedaysdate"></p>
+                    <div id="threedaysimg"></div>
+                    <p id="threedaysweather"></p>
+                    <p id="threedayswind"></p>
+                    <p id="threedaystemperature"></p>
+                </div>
+            </div>
+            <div id="menubox">
+                <div id="buttonarea">
+                    <p id="query" class="query">查询</p>
+                    <p id="trend">趋势</p>
+                    <p id="index">指数</p>
+                    <div id="closemenu"></div>
+                </div>
+                <div id="querybox">
+                    <form action="#" method="#" name="search" id="searchform" onsubmit="return false;">
+                        <input type="text" name="inputcity" id="inputcity" placeholder="输入城市名" autofocus>
+                        <input type="submit" name="submit" id="submit" value="查询">
+                    </form>
+                    <div id="thebox">
+                        <div id="citybox">
+                            <div id="editcontrol" class="controlarea">
+                                <div id="editbutton"></div>
+                            </div>
+                            <div id="loadingbox">
+                                <div class="doublespinner">
+                                  <div class="double-bounce1"></div>
+                                  <div class="double-bounce2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="editbox">
+                            <div id="resultcontrol" class="controlarea">
+                                <div id="cancel">取消</div>
+                                <div id="confirm">确认</div>
+                            </div>
+                            <div id="addbox">
+                                <form action="#" id="addform" onsubmit="return false;">
+                                    <input type="text" id="addcity" placeholder="输入要添加的城市名" autofocus>
+                                    <input type="submit" id="addbutton" value="确认">
+                                    <input type="button" id="cancelbutton" value="取消">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="trendbox">
+                    <canvas id="trendcanvas" width="600" height="350">浏览器不支持canvas</canvas>
+                </div>
+                <div id="indexbox">
+                    <div id="theindex">
+                        <div class="indexdetail" id="indexdetail1">
+                            <div class="indexhead">
+                                <p class="left">穿衣指数</p>
+                                <p class="right"></p>
+                            </div>
+                            <p class="indextext"></p>
+                        </div>
+                        <div class="indexdetail" id="indexdetail2">
+                            <div class="indexhead">
+                                <p class="left">洗车指数</p>
+                                <p class="right"></p>
+                            </div>
+                            <p class="indextext"></p>
+                        </div>
+                        <div class="indexdetail" id="indexdetail3">
+                            <div class="indexhead">
+                                <p class="left">旅游指数</p>
+                                <p class="right"></p>
+                            </div>
+                            <p class="indextext"></p>
+                        </div>
+                        <div class="indexdetail" id="indexdetail4">
+                            <div class="indexhead">
+                                <p class="left">感冒指数</p>
+                                <p class="right"></p>
+                            </div>
+                            <p class="indextext"></p>
+                        </div>
+                        <div class="indexdetail" id="indexdetail5">
+                            <div class="indexhead">
+                                <p class="left">运动指数</p>
+                                <p class="right"></p>
+                            </div>
+                            <p class="indextext"></p>
+                        </div>
+                        <div class="indexdetail" id="indexdetail6">
+                            <div class="indexhead">
+                                <p class="left">紫外线强度指数</p>
+                                <p class="right"></p>
+                            </div>
+                            <p class="indextext"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
